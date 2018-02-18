@@ -1,0 +1,66 @@
+{
+	"id":"1e832466-f9b8-44a6-8329-59b5d3aac782",
+	"timestamp":"2018-02-18T18:17:37.834Z", "lang":"en", 
+	"result": { 
+		"source":"agent", 
+		"resolvedQuery":"john 23", 
+		"speech":"", 
+		"action":"Quote", 
+		"actionIncomplete":false, 
+		"parameters": { 
+			"name":"John",
+			"age": {
+				"amount"=:3, 
+				"unit":"year"
+			}
+		},
+		"contexts":[],
+		"metadata": {
+			"intentId":"b4aa7dce-05a1-4eda-8a21-9381cb7d1ed6", 
+			"webhookUsed":"true", 
+			"webhookForSlotFillingUsed":"false", 
+			"intentName":"Quote"
+		}, 
+		"fulfillment": {
+			"speech":"", 
+			"messages": [{"type":0, "speech":""}]
+		},
+		"score":1.0}, 
+		"status": {
+			"code":200, 
+			"errorType":"success", 
+			"webhookTimedOut":false 
+		}, 
+		"sessionId":"591cb8b9-3990-483d-bfe0-b1541403204c",
+		"quote": {
+			"id":"1e832466-f9b8-44a6-8329-59b5d3aac782", 
+			"timestamp":"2018-02-18T18:17:37.834Z", 
+			"lang":"en", 
+			"result": {
+				"source":"agent", 
+				"resolvedQuery":"john 23", 
+				"speech":"", 
+				"action":"Quote", 
+				"actionIncomplete":false, 
+				"parameters": {
+					"name":"John",
+					"age": {"amount":23, "unit":"year"}
+				},
+				"contexts":[],
+				"metadata": { 
+					"intentId":"b4aa7dce-05a1-4eda-8a21-9381cb7d1ed6",
+					"webhookUsed":"true",
+					"webhookForSlotFillingUsed":"false", 
+					"intentName":"Quote"
+				}, 
+				"fulfillment": { 
+					"speech":"", 
+					"messages": [{"type":0, "speech":""}]}, 
+					"score":1.0 
+			}, 
+			"status": {
+				"code":200, 
+				"errorType":"success", 
+				"webhookTimedOut":false
+			}, "sessionId":"591cb8b9-3990-483d-bfe0-b1541403204c"}
+}
