@@ -6,7 +6,7 @@ class QuoteController < ApplicationController
         response = {
                         "messages" => [
                                     {
-                                        "speech" => "hey #{name} your premium amount is #{premium_amount(age)}",
+                                        "speech" => "Hey #{name} your premium amount is #{premium_amount(age)}",
                                         "type" => 0
                                     },
                                  ]
