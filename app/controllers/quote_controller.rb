@@ -1,33 +1,27 @@
 class QuoteController < ApplicationController
-    skip_before_action :verify_authenticity_token
-    def index
-        name = params['result']['parameters']['name']
-        age = params['result']['parameters']['age']['amount']
-        response = {
-                        "messages" => [
-                                    {
-                                        "speech" => "Hey #{name} your premium amount is #{premium_amount(age)}",
-                                        "type" => 0
-                                    },
-                                 ]
-                    }
+  before_action :set_dialog_request
+  before_action :set_user
 
-        render json: response
-    end
+  def index
+    response = case @dialog_request.action
+               when :request_gadget_quote
+                 RequestGadgetQuote.call(request: @dialog_request, user: @user)
+               when :pick_quote
+                 PickQuote.call(request: @dialog_request, user: @user)
+               when :confirm_quote
+                 # TODO
+               end
 
-    private
+    render json: response
+  end
 
-    def premium_amount age
-        client = Root::Insurance::Client.new(ENV['APP_ID'], ENV['APP_SECRET'], :sandbox)
-        ret = client.create_quote(
-                type:                   :root_term,
-                cover_amount:           1_000_000_00,
-                cover_period:           "1_year",
-                basic_income_per_month: 50_000_00,
-                education_status:       :undergraduate_degree,
-                smoker:                 false,
-                gender:                 :female,
-                age:                    age)
-        ret[0]['module']['basic_income_per_month']
-    end
+  private
+
+  def set_dialog_request
+    @dialog_request = DialogFlowRequestResult.new(params[:result].permit!)
+  end
+
+  def set_user
+    @user = User.create_with(data: {}).find_or_create_by(session_id: params[:sessionId])
+  end
 end
