@@ -80,4 +80,6 @@ test:
 #
 production:
   <<: *default
+  database: Make-rails_production
+  username: Make-rails
   password: <%= ENV['MAKE-RAILS_DATABASE_PASSWORD'] %>
