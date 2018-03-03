@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: Make-rails_production
   username: Make-rails
   password: <%= ENV['MAKE-RAILS_DATABASE_PASSWORD'] %>
