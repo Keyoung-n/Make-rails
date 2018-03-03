@@ -14,7 +14,9 @@ module MakeRails
     config.debug_exception_response_format = :default
 
     Bundler.require(*Rails.groups)
-    Dotenv::Railtie.load
+    if ['development', 'test'].include? ENV['RAILS_ENV']
+      Dotenv::Railtie.load
+    end
     
     HOSTNAME = ENV['HOSTNAME']
     # Settings in config/environments/* take precedence over those specified here.
